@@ -6,7 +6,7 @@ description = "Encrypted, chunked, deduplicated backup, snapshot, and synchroniz
 license = "Apache-2.0"
 
 [dependencies]
-aes-gcm = "0.10"
+aes-gcm = "0.11"
 chrono = { version = "0.4", features = ["serde"] }
 clap = { version = "4.5", features = ["derive", "env"] }
 globset = "0.4"
