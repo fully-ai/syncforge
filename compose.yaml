@@ -1,0 +1,15 @@
+services:
+  syncforge:
+    build: .
+    container_name: syncforge-daemon
+    environment:
+      SYNCFORGE_REPO: "/vault"
+      SYNCFORGE_PASSPHRASE: "${SYNCFORGE_PASSPHRASE:-change-me-passphrase}"
+    volumes:
+      - syncforge_vault:/vault
+      - ./data:/source:ro
+    command: ["daemon", "--profile", "default", "--source", "/source", "--interval-sec", "300"]
+    restart: unless-stopped
+
+volumes:
+  syncforge_vault:
