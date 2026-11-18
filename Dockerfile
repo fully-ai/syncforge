@@ -1,8 +1,8 @@
-FROM rust:1.83-slim AS build
+FROM rust:1-slim-bookworm AS build
 WORKDIR /src
-COPY Cargo.toml ./
+COPY Cargo.toml Cargo.lock ./
 COPY src ./src
-RUN cargo build --release
+RUN cargo build --release --locked
 
 FROM debian:bookworm-slim
 RUN useradd -m -u 10001 syncforge
